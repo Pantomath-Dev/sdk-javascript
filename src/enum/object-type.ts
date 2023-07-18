@@ -1,0 +1,151 @@
+export enum ObjectTypes {
+  SQL_TABLE = 'SQL_TABLE',
+  SQL_VIEW = 'SQL_VIEW',
+  SQL_MATERIALIZED_VIEW = 'SQL_MATERIALIZED_VIEW',
+  SQL_FUNCTION = 'SQL_FUNCTION',
+  SQL_PROCEDURE = 'SQL_PROCEDURE',
+  S3_BUCKET = 'S3_BUCKET',
+  TABLEAU_EXTRACT_REFRESH_TASK = 'TABLEAU_EXTRACT_REFRESH_TASK',
+  TABLEAU_WORKBOOK = 'TABLEAU_WORKBOOK',
+  TABLEAU_DATASOURCE = 'TABLEAU_DATASOURCE',
+  SNOWFLAKE_PIPE = 'SNOWFLAKE_PIPE',
+  FIVETRAN_CONNECTOR = 'FIVETRAN_CONNECTOR',
+  UNKNOWN = 'UNKNOWN',
+  DBT_MODEL = 'DBT_MODEL',
+  POWER_BI_DASHBOARD = 'POWER_BI_DASHBOARD',
+  POWER_BI_REPORT = 'POWER_BI_REPORT',
+  POWER_BI_DATASET = 'POWER_BI_DATASET',
+  POWER_BI_DATAFLOW_ENTITY = 'POWER_BI_DATAFLOW_ENTITY',
+  POWER_BI_REFRESH = 'POWER_BI_REFRESH',
+  POWER_BI_DATAFLOW = 'POWER_BI_DATAFLOW',
+  POWER_BI_ACTIVITY = 'POWER_BI_ACTIVITY',
+  ADF_ACTIVITY = 'ADF_ACTIVITY',
+  ADF_DATA_FLOW = 'ADF_DATA_FLOW',
+  ADF_PIPELINE = 'ADF_PIPELINE',
+  ADF_DATASET = 'ADF_DATASET',
+  SYNAPSE_DATAFLOW = 'SYNAPSE_DATAFLOW',
+  PACKAGE = 'PACKAGE',
+  COMPONENT = 'COMPONENT',
+  JOB = 'JOB',
+  DATASOURCE = 'DATASOURCE',
+  DATASET = 'DATASET',
+  DATAFLOW = 'DATAFLOW',
+  ACTIVITY = 'ACTIVITY',
+  PIPELINE = 'PIPELINE',
+  REPORT = 'REPORT',
+  TRIGGER = 'TRIGGER',
+  REFRESH = 'REFRESH',
+  TASK = 'TASK'
+}
+
+export type ObjectType =
+  | 'SQL_TABLE'
+  | 'SQL_VIEW'
+  | 'SQL_MATERIALIZED_VIEW'
+  | 'SQL_FUNCTION'
+  | 'SQL_PROCEDURE'
+  | 'S3_BUCKET'
+  | 'TABLEAU_EXTRACT_REFRESH_TASK'
+  | 'TABLEAU_WORKBOOK'
+  | 'TABLEAU_DATASOURCE'
+  | 'SNOWFLAKE_PIPE'
+  | 'FIVETRAN_CONNECTOR'
+  | 'UNKNOWN'
+  | 'DBT_MODEL'
+  | 'POWER_BI_DASHBOARD'
+  | 'POWER_BI_REPORT'
+  | 'POWER_BI_DATASET'
+  | 'POWER_BI_DATAFLOW_ENTITY'
+  | 'POWER_BI_REFRESH'
+  | 'POWER_BI_DATAFLOW'
+  | 'POWER_BI_ACTIVITY'
+  | 'ADF_ACTIVITY'
+  | 'ADF_DATA_FLOW'
+  | 'ADF_PIPELINE'
+  | 'ADF_DATASET'
+  | 'SYNAPSE_DATAFLOW'
+  | 'PACKAGE'
+  | 'COMPONENT'
+  | 'JOB'
+  | 'DATASOURCE'
+  | 'DATASET'
+  | 'DATAFLOW'
+  | 'ACTIVITY'
+  | 'PIPELINE'
+  | 'REPORT'
+  | 'TRIGGER'
+  | 'REFRESH'
+  | 'TASK';
+
+export function isObjectType(input: string): input is ObjectType {
+  return Object.keys(ObjectTypes).includes(input);
+}
+
+export function getObjectTypes(): string[] {
+  return Object.keys(ObjectTypes);
+}
+
+export enum JobObjectTypes {
+  SQL_FUNCTION = 'SQL_FUNCTION',
+  SQL_PROCEDURE = 'SQL_PROCEDURE',
+  TABLEAU_EXTRACT_REFRESH_TASK = 'TABLEAU_EXTRACT_REFRESH_TASK',
+  FIVETRAN_CONNECTOR = 'FIVETRAN_CONNECTOR',
+  DBT_MODEL = 'DBT_MODEL',
+  POWER_BI_REFRESH = 'POWER_BI_REFRESH',
+  POWER_BI_ACTIVITY = 'POWER_BI_ACTIVITY',
+  POWER_BI_DATAFLOW = 'POWER_BI_DATAFLOW',
+  ADF_ACTIVITY = 'ADF_ACTIVITY',
+  ADF_PIPELINE = 'ADF_PIPELINE',
+  JOB = 'JOB',
+  ACTIVITY = 'ACTIVITY',
+  DATAFLOW = 'DATAFLOW',
+  PIPELINE = 'PIPELINE',
+  PACKAGE = 'PACKAGE',
+  COMPONENT = 'COMPONENT',
+  REFRESH = 'REFRESH',
+  TASK = 'TASK',
+  SNOWFLAKE_PIPE = 'SNOWFLAKE_PIPE'
+}
+
+export type JobObjectType =
+  | 'SQL_FUNCTION'
+  | 'SQL_PROCEDURE'
+  | 'TABLEAU_EXTRACT_REFRESH_TASK'
+  | 'FIVETRAN_CONNECTOR'
+  | 'DBT_MODEL'
+  | 'POWER_BI_REFRESH'
+  | 'POWER_BI_ACTIVITY'
+  | 'POWER_BI_DATAFLOW'
+  | 'ADF_PIPELINE'
+  | 'ADF_ACTIVITY'
+  | 'ACTIVITY'
+  | 'JOB'
+  | 'DATAFLOW'
+  | 'PIPELINE'
+  | 'PACKAGE'
+  | 'COMPONENT'
+  | 'REFRESH'
+  | 'TASK'
+  | 'SNOWFLAKE_PIPE';
+
+export function isJobObjectType(input: string): input is JobObjectType {
+  return Object.keys(JobObjectTypes).includes(input);
+}
+
+export function getJobObjectTypes(): string[] {
+  return Object.keys(JobObjectTypes);
+}
+
+export enum DataVolumeObjectTypes {
+  SQL_TABLE = 'SQL_TABLE'
+}
+
+export type DataVolumeObjectType = 'SQL_TABLE';
+
+export function isDataVolumeObjectType(input: string): input is DataVolumeObjectType {
+  return Object.keys(DataVolumeObjectTypes).includes(input);
+}
+
+export function getDataVolumeObjectTypes(): string[] {
+  return Object.keys(DataVolumeObjectTypes);
+}

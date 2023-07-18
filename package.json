@@ -1,0 +1,72 @@
+{
+  "name": "@pantomath/sdk-javascript",
+  "version": "1.0.10",
+  "description": "sdk-javascript",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
+    "clean": "rm -rf .esbuild lib node_modules package-lock.json && npm install",
+    "clean:build": "npm run clean && npm run build",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:unit": "jest",
+    "test:integration": "jest --config jest-intg-config.ts",
+    "lint": "npm run lint:types && ./node_modules/.bin/eslint src",
+    "lint:fix": "./node_modules/.bin/eslint src --fix",
+    "lint:types": "tsc --noemit",
+    "install-husky": "husky install ",
+    "pre-push": "npm run lint && npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pantomath-Dev/sdk-javascript"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pantomath-Dev/sdk-javascript/issues"
+  },
+  "homepage": "https://github.com/Pantomath-Dev/sdk-javascript#readme",
+  "dependencies": {
+    "axios": "^1.2.2",
+    "exponential-backoff": "^3.1.1",
+    "lodash": "^4.17.21",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.2.5",
+    "@types/lodash": "^4.14.191",
+    "@types/node": "^14.14.25",
+    "@types/supertest": "^2.0.12",
+    "@commitlint/cli": "^17.3.0",
+    "@types/express": "^4.17.14",
+    "@typescript-eslint/eslint-plugin": "^5.22.0",
+    "@typescript-eslint/parser": "^5.22.0",
+    "commitlint-config-jira": "^1.6.4",
+    "commitlint-plugin-jira-rules": "^1.6.4",
+    "eslint": "^8.11.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^3.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "husky": "^8.0.2",
+    "jest": "^29.3.1",
+    "jest-mock-extended": "^3.0.3",
+    "jest-ts-auto-mock": "2.1.0",
+    "joi": "^17.8.4",
+    "tsc-alias": "^1.8.2",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^3.9.0",
+    "ttypescript": "^1.5.15",
+    "typescript": "^4.6.4",
+    "ts-auto-mock": "3.5.0"
+  }
+}

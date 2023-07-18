@@ -1,0 +1,43 @@
+export enum DataSetTypes {
+  SQL_TABLE = 'SQL_TABLE',
+  SQL_VIEW = 'SQL_VIEW',
+  SQL_MATERIALIZED_VIEW = 'SQL_MATERIALIZED_VIEW',
+  S3_BUCKET = 'S3_BUCKET',
+  TABLEAU_WORKBOOK = 'TABLEAU_WORKBOOK',
+  TABLEAU_DATASOURCE = 'TABLEAU_DATASOURCE',
+  POWER_BI_DASHBOARD = 'POWER_BI_DASHBOARD',
+  POWER_BI_REPORT = 'POWER_BI_REPORT',
+  POWER_BI_DATASET = 'POWER_BI_DATASET',
+  POWER_BI_DATAFLOW_ENTITY = 'POWER_BI_DATAFLOW_ENTITY',
+  ADF_DATA_FLOW = 'ADF_DATA_FLOW',
+  ADF_DATASET = 'ADF_DATASET',
+  FTP = 'FTP'
+}
+
+export type DataSetType =
+  | 'SQL_TABLE'
+  | 'SQL_VIEW'
+  | 'SQL_MATERIALIZED_VIEW'
+  | 'S3_BUCKET'
+  | 'TABLEAU_WORKBOOK'
+  | 'TABLEAU_DATASOURCE'
+  | 'UNKNOWN'
+  | 'POWER_BI_DASHBOARD'
+  | 'POWER_BI_REPORT'
+  | 'POWER_BI_DATASET'
+  | 'POWER_BI_DATAFLOW_ENTITY'
+  | 'ADF_DATA_FLOW'
+  | 'ADF_DATASET'
+  | 'SYNAPSE_DATAFLOW'
+  | 'PACKAGE'
+  | 'COMPONENT'
+  | 'DATASET'
+  | 'FTP';
+
+export function isDataSetType(input: string): input is DataSetType {
+  return Object.keys(DataSetTypes).includes(input);
+}
+
+export function getDataSetTypes(): string[] {
+  return Object.keys(DataSetTypes);
+}
