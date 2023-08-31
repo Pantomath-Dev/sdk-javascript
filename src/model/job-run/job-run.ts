@@ -8,6 +8,7 @@ import { PostJobRunLogsRequest } from '@src/request';
 
 export type JobRunConstructorParams<TJob extends Job> = {
   job: TJob;
+  name?: string;
   nextRunAt?: Date;
   sourceDataSets?: DataSet[];
   targetDataSets?: DataSet[];
@@ -84,6 +85,8 @@ export class JobRun<TJob extends Job> {
 
   private readonly _id: string;
 
+  private readonly _name?: string;
+
   private readonly _sourceDataSets: DataSet[];
 
   private readonly _targetDataSets: DataSet[];
@@ -101,6 +104,7 @@ export class JobRun<TJob extends Job> {
   constructor(params: JobRunConstructorParamsInternal<TJob>) {
     this._job = params.job;
     this._id = uuidv4();
+    this._name = params.name;
     this._sourceDataSets = params.sourceDataSets ?? [];
     this._targetDataSets = params.targetDataSets ?? [];
     this._nextRunAt = params.nextRunAt;
@@ -112,6 +116,13 @@ export class JobRun<TJob extends Job> {
       reportedSuccess: false,
       reportedFailure: false
     };
+  }
+
+  private _getNormalizedMessage(message: string): string {
+    const lengthCappedMessage = message.substring(0, 1000);
+    const jobRunNamePrefix = this._name ? `${this._name} running in ` : '';
+    const jobName = this._job.name;
+    return `${jobRunNamePrefix}${jobName}: ${lengthCappedMessage}`;
   }
 
   public get job(): TJob {
@@ -143,7 +154,7 @@ export class JobRun<TJob extends Job> {
       JobRunLog.create({
         jobRun: this,
         status: JobRunLogStatuses.STARTED,
-        message: params.message ? params.message.substring(0, 1000) : `${this._job} started`,
+        message: this._getNormalizedMessage(params.message ?? `Started`),
         recordsEffected: params.recordsEffected,
         timestamp: new Date()
       })
@@ -155,7 +166,7 @@ export class JobRun<TJob extends Job> {
       JobRunLog.create({
         jobRun: this,
         status: JobRunLogStatuses.IN_PROGRESS,
-        message: params.message.substring(0, 1000),
+        message: this._getNormalizedMessage(params.message),
         recordsEffected: params.recordsEffected,
         timestamp: new Date()
       })
@@ -167,7 +178,7 @@ export class JobRun<TJob extends Job> {
       JobRunLog.create({
         jobRun: this,
         status: JobRunLogStatuses.WARNING,
-        message: params.message.substring(0, 1000),
+        message: this._getNormalizedMessage(params.message),
         recordsEffected: params.recordsEffected,
         timestamp: new Date()
       })
@@ -188,7 +199,7 @@ export class JobRun<TJob extends Job> {
       JobRunLog.create({
         jobRun: this,
         status: JobRunLogStatuses.SUCCEEDED,
-        message: params.message ? params.message.substring(0, 1000) : `${this._job} succeeded`,
+        message: this._getNormalizedMessage(params.message ?? `Succeeded`),
         recordsEffected: params.recordsEffected,
         timestamp: new Date()
       })
@@ -210,7 +221,7 @@ export class JobRun<TJob extends Job> {
       JobRunLog.create({
         jobRun: this,
         status: JobRunLogStatuses.FAILED,
-        message: params.message ? params.message.substring(0, 1000) : `${this._job} failed`,
+        message: this._getNormalizedMessage(params.message ?? `Failed`),
         recordsEffected: params.recordsEffected,
         timestamp: new Date()
       })
