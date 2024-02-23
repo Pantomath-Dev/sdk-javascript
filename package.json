@@ -1,6 +1,6 @@
 {
   "name": "@pantomath/sdk-javascript",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "sdk-javascript",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
