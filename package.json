@@ -1,6 +1,6 @@
 {
   "name": "@pantomath/sdk-javascript",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "sdk-javascript",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -9,7 +9,7 @@
     "clean": "rm -rf .esbuild lib node_modules package-lock.json && npm install",
     "clean:build": "npm run clean && npm run build",
     "test": "npm run test:unit && npm run test:integration",
-    "test:unit": "jest",
+    "test:unit": "jest  --silent=false",
     "test:integration": "jest --config jest-intg-config.ts",
     "lint": "npm run lint:types && ./node_modules/.bin/eslint src",
     "lint:fix": "./node_modules/.bin/eslint src --fix",

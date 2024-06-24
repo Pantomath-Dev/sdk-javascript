@@ -34,7 +34,6 @@ describe('sdk-javascript', () => {
       sourceDataSets: [sourceDataset],
       targetDataSets: [targetDataset]
     });
-
     jobRun.logStart({ message: 'Starting procedure foo' });
     for (let i = 0; i < 5; i++) {
       jobRun.logProgress({ message: `Completed step ${i + 1}`, recordsEffected: i * 100 });
