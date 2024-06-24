@@ -16,11 +16,11 @@ const config: Config = {
     '^.+\\.tsx?$': [
       'ts-jest',
       {
-        compiler: 'ttypescript'
+        compiler: 'typescript'
       }
     ]
   },
-  setupFiles: ['<rootDir>/test/setup/set-env-vars.ts', '<rootDir>/test/setup/config-ts-auto-mock.ts'],
+  setupFiles: ['<rootDir>/test/setup/set-jest-env.ts', '<rootDir>/test/setup/config-ts-auto-mock.ts'],
   modulePathIgnorePatterns: ['<rootDir>/lib/']
 };
 
