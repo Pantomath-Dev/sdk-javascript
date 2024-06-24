@@ -53,7 +53,8 @@ export class PantomathApiClient {
         },
         {
           headers: {
-            'x-api-key': this._apiKey
+            'x-api-key': this._apiKey,
+            'x-sdk-type': 'JavaScript'
           }
         }
       );
