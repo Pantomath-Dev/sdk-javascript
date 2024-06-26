@@ -41,10 +41,9 @@ export class PantomathApiClient {
       const pageOfJobRunLogs: PostJobRunLog[] = [];
       for (let i = 0; i < this._jobLogsRequestPageSize && i < jobRunLogs.length; i++) {
         const jobRunLog = jobRunLogs.shift();
-        if (!jobRunLog) {
-          return;
+        if (jobRunLog) {
+          pageOfJobRunLogs.push(jobRunLog);
         }
-        pageOfJobRunLogs.push(jobRunLog);
       }
       await axios.post(
         `${this._apiBaseUrl}/job-run-logs`,
