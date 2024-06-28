@@ -37,14 +37,15 @@ export class PantomathApiClient {
 
   async postJobRunLogs(postJobRunLogsRequest: PostJobRunLogsRequest) {
     const jobRunLogs: PostJobRunLog[] = postJobRunLogsRequest.jobRunLogs;
+
     do {
       const pageOfJobRunLogs: PostJobRunLog[] = [];
-      for (let i = 0; i < this._jobLogsRequestPageSize && i < jobRunLogs.length; i++) {
+      const jobRunLogLength = jobRunLogs.length;
+      for (let i = 0; i < this._jobLogsRequestPageSize && i <= jobRunLogLength; i++) {
         const jobRunLog = jobRunLogs.shift();
-        if (!jobRunLog) {
-          return;
+        if (jobRunLog) {
+          pageOfJobRunLogs.push(jobRunLog);
         }
-        pageOfJobRunLogs.push(jobRunLog);
       }
       await axios.post(
         `${this._apiBaseUrl}/job-run-logs`,
