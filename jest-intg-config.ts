@@ -4,7 +4,7 @@ import jestConfig from './jest.config';
 const config: Config = {
   ...jestConfig,
   testMatch: ['**/__tests__**/?(*.)+(in-test).[jt]s?(x)'],
-  setupFilesAfterEnv: ['<rootDir>/test/set-jest-env.ts']
+  setupFilesAfterEnv: ['<rootDir>/test/setup/set-jest-env.ts']
 };
 
 export default config;
