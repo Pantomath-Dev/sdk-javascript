@@ -1,0 +1,19 @@
+name: build
+on:
+  push:
+jobs:
+  build:
+    # runs-on: [self-hosted, default-dev-self-hosted-runner]
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Set up Nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+      - name: Lint and Test
+        run: |
+          npm install
+          npm run lint 
+          npm run test

@@ -1,0 +1,9 @@
+name: Regression
+on:
+  workflow_dispatch:
+  workflow_call:
+jobs:
+  dummy-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "hi"
