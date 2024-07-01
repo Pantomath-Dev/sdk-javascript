@@ -1,6 +1,14 @@
 name: build
 on:
   push:
+    branches:
+      - '**'
+    paths-ignore: #https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-excluding-paths
+      - 'README.md'
+      - '.github/CODEOWNERS'
+      - '.github/workflows/regression.yaml'
+      - 'regression/**'
+      - '.gitignore'
 jobs:
   build:
     # runs-on: [self-hosted, default-dev-self-hosted-runner]
@@ -17,3 +25,5 @@ jobs:
           npm install
           npm run lint 
           npm run test
+        env:
+          PANTOMATH_API_KEY: ${{ env.PANTOMATH_API_KEY }}
