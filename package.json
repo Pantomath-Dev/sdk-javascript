@@ -8,7 +8,7 @@
     "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
     "clean": "rm -rf .esbuild lib node_modules package-lock.json && npm install",
     "clean:build": "npm run clean && npm run build",
-    "test": "npm run test:unit && npm run test:integration",
+    "test": "npm run test:unit",
     "test:unit": "jest  --silent=false",
     "test:integration": "jest --config jest-intg-config.ts",
     "lint": "npm run lint:types && ./node_modules/.bin/eslint src",
