@@ -30,7 +30,7 @@ export class PowerBIDataset extends DataSet {
   }
 
   get fullyQualifiedObjectName(): string {
-    return `app.powerbi.com/groups/${this._workspaceId}/dashboards/${this._datasetId}`.toLowerCase();
+    return `app.powerbi.com/groups/${this._workspaceId}/datasets/${this._datasetId}`.toLowerCase();
   }
 
   static create(params: PowerBIDatasetConstructorParams): PowerBIDataset {
